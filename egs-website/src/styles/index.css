@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap');
+
+/* Tokens de diseño para Tailwind v4 */
+@theme {
+  /* Colores */
+  --color-azul-profundo: #0d2b5e;
+  --color-azul-medio: #173f8a;
+  --color-cyan-acento: #00a8cc;
+  --color-gris-oscuro: #333333;
+  --color-gris-medio: #666666;
+  --color-gris-bg: #f8fafc;
+  --color-blanco: #ffffff;
+
+    /* Tipografías */
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+
+    /* Bordes y Sombras */
+    --radius-card: 12px;
+    --shadow-card: 0 4px 20px rgba(13, 43, 94, 0.08);
+    --shadow-hover: 0 12px 28px rgba(13, 43, 94, 0.15);
+
+    /* Breakpoints / Pantallas */
+    --breakpoint-xs: 360px;
+    --breakpoint-sm: 768px;
+    --breakpoint-md: 1024px;
+    --breakpoint-lg: 1366px;
+    --breakpoint-xl: 1920px;
+  }
+
+
+/* Reglas CSS Globales */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-gris-oscuro);
+  background-color: var(--color-blanco);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
