@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Button from '../components/ui/Button';
+import ServiceCard from '../components/ui/ServiceCard';
+import SectionHeader from '../components/ui/SectionHeader';
+import TestimonialCard from '../components/ui/TestimonialCard';
 
 export default function Home() {
   useEffect(() => {
@@ -9,10 +12,9 @@ export default function Home() {
   return (
     <>
       {/* ======== HERO SECTION ======== */}
-        <section className="relative overflow-hidden bg-linear-to-br from-azul-profundo via-azul-medio to-azul-profundo text-white pt-28 pb-20">
-        {/* Adorno de fondo circular */}
+      <section className="relative overflow-hidden bg-linear-to-br from-azul-profundo via-azul-medio to-azul-profundo text-white pt-28 pb-20">
         <div className="absolute top-[-20%] right-[-10%] w-150 h-150 bg-cyan-acento/15 rounded-full blur-3xl pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-cyan-acento/20 border border-cyan-acento/40 text-cyan-300 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider mb-6">
@@ -30,24 +32,18 @@ export default function Home() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Link
-                to="/contacto"
-                className="bg-cyan-acento hover:bg-cyan-acento/90 text-white px-6 py-3 rounded-md font-semibold transition-all inline-flex items-center gap-2"
-              >
-                <i className="fas fa-paper-plane" /> Solicitar cotización
-              </Link>
-              <Link
-                to="/servicios"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-md font-semibold transition-all inline-flex items-center gap-2"
-              >
-                <i className="fas fa-folder-open" /> Ver servicios
-              </Link>
+              <Button to="/contacto" variant="primary" icon="fas fa-paper-plane">
+                Solicitar cotización
+              </Button>
+              <Button to="/servicios" variant="secondary" icon="fas fa-folder-open">
+                Ver servicios
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ======== STATS BAR ======== */}
+      {/* ======== BARRA DE ESTADÍSTICAS ======== */}
       <section className="bg-azul-profundo py-10 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -74,107 +70,71 @@ export default function Home() {
       {/* ======== SERVICIOS DESTACADOS ======== */}
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold tracking-widest text-cyan-acento uppercase block mb-2">Nuestros servicios</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-azul-profundo mb-4">
-              Soluciones documentales para su organización
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-              Ofrecemos soluciones integrales para organizar, proteger, preservar y administrar la información de su organización.
-            </p>
-          </div>
+          <SectionHeader
+            label="Nuestros servicios"
+            title="Soluciones documentales para su organización"
+            description="Ofrecemos soluciones integrales para organizar, proteger, preservar y administrar la información de su organización."
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link
+            <ServiceCard
+              id="organizacion"
+              icon="fas fa-boxes-stacked"
+              badgeText="Archivística"
+              badgeType="azul"
+              title="Organización integral de archivos"
+              description="Organizamos y estructuramos sus archivos para facilitar el acceso a la información, optimizar la gestión documental y garantizar el cumplimiento de la normativa archivística."
               to="/servicios#organizacion"
-              className="bg-white rounded-card shadow-card hover:shadow-hover border border-azul-profundo/10 border-t-4 border-t-cyan-acento p-8 transition-all hover:-translate-y-1 group"
-            >
-              <div className="text-cyan-acento text-3xl mb-4">
-                <i className="fas fa-boxes-stacked" />
-              </div>
-              <h3 className="text-xl font-bold font-heading text-azul-profundo mb-2">Organización integral de archivos</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Organizamos y estructuramos sus archivos para facilitar el acceso a la información, optimizar la gestión documental y garantizar el cumplimiento de la normativa archivística.
-              </p>
-              <span className="text-xs font-semibold text-cyan-acento inline-flex items-center gap-2 group-hover:underline">
-                Ver más <i className="fas fa-arrow-right" />
-              </span>
-            </Link>
-
-            <Link
+            />
+            <ServiceCard
+              id="digitalizacion"
+              icon="fas fa-scanner-image"
+              badgeText="Más solicitado"
+              badgeType="cyan"
+              title="Digitalización y preservación digital"
+              description="Transformamos sus documentos físicos en información digital organizada, segura y fácilmente accesible, sentando las bases para su preservación digital a largo plazo."
               to="/servicios#digitalizacion"
-              className="bg-white rounded-card shadow-card hover:shadow-hover border border-azul-profundo/10 border-t-4 border-t-cyan-acento p-8 transition-all hover:-translate-y-1 group"
-            >
-              <div className="text-cyan-acento text-3xl mb-4">
-                <i className="fas fa-scanner-image" />
-              </div>
-              <h3 className="text-xl font-bold font-heading text-azul-profundo mb-2">Digitalización y preservación digital</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Transformamos sus documentos físicos en información digital organizada, segura y fácilmente accesible, sentando las bases para su preservación digital a largo plazo.
-              </p>
-              <span className="text-xs font-semibold text-cyan-acento inline-flex items-center gap-2 group-hover:underline">
-                Ver más <i className="fas fa-arrow-right" />
-              </span>
-            </Link>
-
-            <Link
+            />
+            <ServiceCard
+              id="nebula"
+              icon="fas fa-cloud-arrow-up"
+              badgeText="Tecnología"
+              badgeType="azul"
+              title="Nebula Vault — Bodega Virtual"
+              description="Software OAIS de preservación digital con acceso 24/7. Tecnología propia que automatiza y optimiza todo el ciclo de vida de la información institucional."
               to="/servicios#nebula"
-              className="bg-white rounded-card shadow-card hover:shadow-hover border border-azul-profundo/10 border-t-4 border-t-cyan-acento p-8 transition-all hover:-translate-y-1 group"
-            >
-              <div className="text-azul-medio text-3xl mb-4">
-                <i className="fas fa-cloud-arrow-up" />
-              </div>
-              <h3 className="text-xl font-bold font-heading text-azul-profundo mb-2">Nebula Vault — Bodega Virtual</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Software OAIS de preservación digital con acceso 24/7. Tecnología propia que automatiza y optimiza todo el ciclo de vida de la información institucional.
-              </p>
-              <span className="text-xs font-semibold text-cyan-acento inline-flex items-center gap-2 group-hover:underline">
-                Ver más <i className="fas fa-arrow-right" />
-              </span>
-            </Link>
+            />
           </div>
 
           <div className="text-center mt-10">
-            <Link
-              to="/servicios"
-              className="inline-flex items-center gap-2 border-2 border-azul-profundo text-azul-profundo hover:bg-azul-profundo hover:text-white px-6 py-2.5 rounded-md font-semibold transition-all"
-            >
-              Ver todos los servicios <i className="fas fa-arrow-right" />
-            </Link>
+            <Button to="/servicios" variant="outline" icon="fas fa-arrow-right">
+              Ver todos los servicios
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* ======== SOBRE EGS ======== */}
+      {/* ======== TESTIMONIOS ======== */}
       <section className="py-16 sm:py-20 bg-gris-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-linear-to-br from-azul-profundo to-azul-medio rounded-2xl aspect-4/3 flex items-center justify-center relative overflow-hidden p-8 text-white">
-              <i className="fas fa-folder-tree text-8xl text-white/10 absolute" />
-              <div className="relative z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 w-full mt-auto">
-                <div className="text-3xl font-extrabold font-heading text-cyan-acento">+10</div>
-                <p className="text-xs text-white/80">Años de experiencia en gestión documental</p>
-              </div>
-            </div>
+          <SectionHeader
+            label="Lo que dicen nuestros clientes"
+            title="Satisfacción comprobada"
+          />
 
-            <div>
-              <span className="text-xs font-bold tracking-widest text-cyan-acento uppercase block mb-2">Quiénes somos</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-azul-profundo mb-4">
-                Gestión documental y preservación digital integradas
-              </h2>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
-                EGS Soluciones Integrales S.A.S. es una firma consultora especializada en gestión documental que ofrece soluciones para entidades públicas y privadas. Contamos con un equipo multidisciplinario que combina experiencia técnica y tecnológica para diseñar e implementar procesos adaptados a las necesidades de cada organización.
-              </p>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-8">
-                Trabajamos para optimizar la administración de la información mediante procesos seguros, eficientes y confiables, promoviendo el cumplimiento de la normativa archivística, la trazabilidad documental y la preservación del patrimonio documental.
-              </p>
-              <Link
-                to="/acerca-de"
-                className="inline-flex items-center gap-2 bg-azul-profundo hover:bg-azul-profundo/90 text-white px-6 py-3 rounded-md font-semibold transition-all"
-              >
-                Conoce más sobre EGS <i className="fas fa-arrow-right" />
-              </Link>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <TestimonialCard
+              quote="EGS demostró un alto nivel de experticia y compromiso en la organización y digitalización de nuestros fondos acumulados. Los resultados superaron nuestras expectativas tanto en calidad como en cumplimiento de los plazos establecidos."
+              author="Contraloría General de la República"
+              org="Entidad de control fiscal del Estado colombiano"
+              initials="CG"
+            />
+            <TestimonialCard
+              quote="La gestión de EGS en la custodia y administración de nuestros archivos ha sido ejemplar. Su capacidad para manejar grandes volúmenes de documentación con precisión y seguridad es un activo invaluable para nuestra organización."
+              author="Empresa de Acueducto y Alcantarillado de Bogotá"
+              org="EAAB — Empresa de servicios públicos"
+              initials="AB"
+            />
           </div>
         </div>
       </section>
