@@ -1,6 +1,6 @@
 <div align="center">
 
-# EGS Soluciones Integrales · Sitio Web Corporativo
+# EGS SAS · Sitio Web Corporativo
 
 **Consultoría archivística, custodia, digitalización, preservación digital y desarrollo tecnológico bajo norma AGN, desde Bogotá para Colombia.**
 
@@ -124,7 +124,7 @@ Sigue estos pasos para clonar e iniciar el entorno de desarrollo local:
 ### 2. Instalación
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/egs-website.git
+git clone https://github.com/centricasolucionesdiseno-ux/egs-website.git
 
 # Entrar al directorio
 cd egs-website
@@ -156,6 +156,6 @@ Hasta la fecha se han ejecutado y validado los siguientes hitos técnicos:
 
 <div align="center">
 
-© 2026 EGS Soluciones Integrales S.A.S. Todos los derechos reservados.
+© 2026 EGS S.A.S. Todos los derechos reservados.
 
 </div>
