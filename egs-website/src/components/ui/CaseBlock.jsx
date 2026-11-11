@@ -1,100 +1,98 @@
+// Caso de éxito: columna de cliente + cifras, y columna con alcance, logros, etapas, etiquetas y testimonio.
 export default function CaseBlock({
   logoUrl,
   clientName,
   clientType,
-  statVal1,
-  statDesc1,
-  statVal2,
-  statDesc2,
+  stats = [],
   tagText,
+  tagIcon = 'fas fa-trophy',
   title,
   description,
   achievements = [],
+  steps = [],
   badges = [],
   quote,
   author,
   reverse = false,
-  customGradient
 }) {
   return (
-    <article
-      className={`grid grid-cols-1 lg:grid-cols-12 rounded-2xl overflow-hidden shadow-hover mb-12 border border-azul-profundo/10 ${
-        reverse ? 'lg:flex-row-reverse' : ''
-      }`}
-    >
-      {/* Sidebar Lateral de Marca */}
+    <article className="grid md:grid-cols-12 bg-white border border-line rounded-card overflow-hidden">
       <div
-        className={`lg:col-span-5 p-8 sm:p-12 text-white flex flex-col justify-between ${
-          customGradient || 'bg-linear-to-b from-azul-profundo to-azul-medio'
-        } ${reverse ? 'lg:order-2' : 'lg:order-1'}`}
+        className={`md:col-span-4 bg-gris-bg p-8 sm:p-10 flex flex-col justify-between gap-10 border-b md:border-b-0 border-line ${
+          reverse ? 'md:order-2 md:border-l' : 'md:border-r'
+        }`}
       >
         <div>
-          <div className="w-18 h-18 bg-white/12 border border-white/20 rounded-xl flex items-center justify-center p-3 mb-5">
-            <img src={logoUrl} alt={clientName} className="max-h-full max-w-full object-contain" />
+          <div className="w-16 h-16 bg-white border border-line rounded-xl flex items-center justify-center p-2.5 mb-5">
+            <img src={logoUrl} alt="" width="80" height="80" className="max-h-full max-w-full object-contain" />
           </div>
-          <h3 className="text-xl font-bold font-heading text-white mb-1">{clientName}</h3>
-          <p className="text-xs font-semibold tracking-wider text-white/60 uppercase">{clientType}</p>
+          <h2 className="text-xl font-semibold font-heading text-azul-profundo mb-1">{clientName}</h2>
+          <p className="text-xs font-semibold tracking-wider uppercase text-gris-medio">{clientType}</p>
         </div>
 
-        <div className="space-y-3 mt-8">
-          <div className="bg-white/10 border border-white/15 rounded-xl p-4">
-            <div className="text-2xl font-extrabold font-heading text-cyan-acento leading-none mb-1">
-              {statVal1}
+        <dl className="space-y-3">
+          {stats.map((s) => (
+            <div key={s.desc} className="bg-white border border-line rounded-lg p-4">
+              <dt className="sr-only">{s.desc}</dt>
+              <dd>
+                <span className="block text-2xl font-bold font-heading text-azul-profundo leading-none mb-1">{s.val}</span>
+                <span className="text-xs text-gris-medio">{s.desc}</span>
+              </dd>
             </div>
-            <div className="text-xs text-white/70">{statDesc1}</div>
-          </div>
-          <div className="bg-white/10 border border-white/15 rounded-xl p-4">
-            <div className="text-2xl font-extrabold font-heading text-cyan-acento leading-none mb-1">
-              {statVal2}
-            </div>
-            <div className="text-xs text-white/70">{statDesc2}</div>
-          </div>
-        </div>
+          ))}
+        </dl>
       </div>
 
-      {/* Contenido Principal */}
-      <div className={`lg:col-span-7 bg-white p-8 sm:p-11 flex flex-col justify-between ${reverse ? 'lg:order-1' : 'lg:order-2'}`}>
+      <div className={`md:col-span-8 p-8 sm:p-10 flex flex-col gap-6 ${reverse ? 'md:order-1' : ''}`}>
         <div>
-          <span className="inline-flex items-center gap-1.5 bg-cyan-claro text-cyan-acento px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3.5">
-            <i className="fas fa-trophy" /> {tagText}
+          <span className="inline-flex items-center gap-2 bg-cyan-claro text-cyan-texto px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+            <i className={tagIcon} aria-hidden="true" /> {tagText}
           </span>
-          <h2 className="text-2xl font-bold font-heading text-azul-profundo mb-3.5">
-            {title}
-          </h2>
-          <p className="text-sm text-gray-600 leading-relaxed mb-6">
-            {description}
-          </p>
-
-          {achievements.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-              {achievements.map((item, idx) => (
-                <div key={idx} className="bg-gray-50 rounded-lg p-3.5 text-center">
-                  <div className="text-lg font-extrabold font-heading text-azul-profundo leading-tight mb-0.5">
-                    {item.val}
-                  </div>
-                  <div className="text-xs text-gray-500 font-medium">{item.desc}</div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {badges.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-6">
-              {badges.map((badge, idx) => (
-                <span key={idx} className="bg-azul-medio/10 text-azul-medio text-xs font-medium px-3 py-1 rounded-full">
-                  {badge}
-                </span>
-              ))}
-            </div>
-          )}
+          <h3 className="text-xl sm:text-2xl font-semibold font-heading text-azul-profundo mb-3">{title}</h3>
+          <p className="text-sm text-gris-medio leading-relaxed">{description}</p>
         </div>
 
+        {achievements.length > 0 && (
+          <ul className="grid sm:grid-cols-3 gap-3">
+            {achievements.map((a) => (
+              <li key={a.desc} className="border border-line rounded-lg p-4 text-center">
+                <span className="block text-base font-bold font-heading text-azul-profundo leading-tight mb-0.5">{a.val}</span>
+                <span className="text-xs text-gris-medio">{a.desc}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {steps.length > 0 && (
+          <ol className="divide-y divide-line border-y border-line">
+            {steps.map((s, i) => (
+              <li key={s.title} className="grid grid-cols-[2.5rem_1fr] gap-3 py-4">
+                <span className="font-heading text-sm font-semibold text-cyan-texto pt-0.5">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h4 className="font-heading text-base font-semibold text-azul-profundo mb-1">{s.title}</h4>
+                  <p className="text-sm text-gris-medio leading-relaxed">{s.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+
+        {badges.length > 0 && (
+          <ul className="flex flex-wrap gap-2">
+            {badges.map((b) => (
+              <li key={b} className="bg-azul-medio/10 text-azul-medio text-xs font-medium px-3 py-1 rounded-full">
+                {b}
+              </li>
+            ))}
+          </ul>
+        )}
+
         {quote && (
-          <blockquote className="bg-gray-50 border-l-4 border-cyan-acento p-4 rounded-r-lg italic text-xs sm:text-sm text-gray-700">
-            "{quote}"
-            <span className="block not-italic font-bold text-azul-profundo text-xs mt-2">
-              — {author}
-            </span>
+          <blockquote className="mt-auto border-l-4 border-cyan-acento bg-gris-bg rounded-r-lg p-5">
+            <p className="text-sm italic text-gris-oscuro leading-relaxed">“{quote}”</p>
+            <footer className="mt-3 text-xs font-bold text-azul-profundo">— {author}</footer>
           </blockquote>
         )}
       </div>
