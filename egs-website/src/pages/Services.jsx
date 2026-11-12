@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
+import CtaBand from '../components/ui/CtaBand';
+import PageHeader from '../components/ui/PageHeader';
 import SectionHeader from '../components/ui/SectionHeader';
 import ServiceCard from '../components/ui/ServiceCard';
 import InstrumentItem from '../components/ui/InstrumentItem';
@@ -130,50 +131,31 @@ export default function Services() {
 
   return (
     <>
-      {/* ======== ENCABEZADO ======== */}
-      <section className="hero-glow bg-gris-bg border-b border-line">
-        <div className={`${container} pt-12 pb-16 md:pb-24`}>
-          <nav aria-label="Ruta de navegación" className="text-xs text-gris-medio mb-10">
-            <ol className="flex items-center gap-2">
-              <li>
-                <Link to="/" className="hover:text-azul-profundo">Inicio</Link>
-              </li>
-              <li aria-hidden="true"><i className="fas fa-chevron-right text-[10px]" /></li>
-              <li aria-current="page" className="font-semibold text-azul-profundo">Servicios</li>
-            </ol>
-          </nav>
-
-          <span className="text-xs font-bold tracking-widest uppercase text-cyan-texto block mb-3">
-            Portafolio 2026
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold font-heading text-azul-profundo leading-[1.1] tracking-tight max-w-3xl mb-6">
-            Servicios especializados en el ciclo completo del documento
-          </h1>
-          <p className="text-base sm:text-lg text-gris-medio leading-relaxed max-w-2xl">
-            Desde la organización inicial hasta la preservación digital a largo plazo. Ofrecemos soluciones integrales
-            con los más altos estándares técnicos y normativos.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        crumb="Servicios"
+        label="Portafolio 2026"
+        title="Servicios especializados en el ciclo completo del documento"
+        description="Desde la organización inicial hasta la preservación digital a largo plazo. Ofrecemos soluciones integrales con los más altos estándares técnicos y normativos."
+      />
 
       {/* ======== NEBULA VAULT ======== */}
-      <section id="nebula" className={`scroll-mt-28 bg-white ${section}`}>
+      <section id="nebula" className={`scroll-mt-28 bg-surface ${section}`}>
         <div className={`${container} grid md:grid-cols-12 gap-12 items-center`}>
           <div className="md:col-span-6">
             <span className="text-xs font-bold tracking-widest uppercase text-cyan-texto block mb-3">
               Diferenciador tecnológico
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-azul-profundo mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-ink mb-4">
               Nebula Vault, bodega virtual
             </h2>
-            <p className="text-sm sm:text-base text-gris-medio leading-relaxed mb-8 max-w-xl">
+            <p className="text-sm sm:text-base text-muted leading-relaxed mb-8 max-w-xl">
               Nuestro software de preservación digital desarrollado bajo el estándar internacional OAIS (Open Archival
               Information System). Una solución que muy pocas empresas del sector ofrecen en Colombia.
             </p>
 
             <ul className="divide-y divide-line border-y border-line mb-8">
               {nebulaFeatures.map((f) => (
-                <li key={f.text} className="flex items-center gap-4 py-3.5 text-sm font-medium text-azul-profundo">
+                <li key={f.text} className="flex items-center gap-4 py-3.5 text-sm font-medium text-ink">
                   <i className={`${f.icon} text-cyan-texto w-5 text-center`} aria-hidden="true" />
                   {f.text}
                 </li>
@@ -192,7 +174,7 @@ export default function Services() {
       </section>
 
       {/* ======== PORTAFOLIO ======== */}
-      <section className={`bg-gris-bg border-y border-line ${section}`}>
+      <section className={`bg-surface-alt border-y border-line ${section}`}>
         <div className={container}>
           <SectionHeader
             center={false}
@@ -211,7 +193,7 @@ export default function Services() {
       </section>
 
       {/* ======== CONSULTORÍA ======== */}
-      <section id="instrumentos" className={`scroll-mt-28 bg-white ${section}`}>
+      <section id="instrumentos" className={`scroll-mt-28 bg-surface ${section}`}>
         <div className={container}>
           <SectionHeader
             center={false}
@@ -229,22 +211,14 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ======== CTA ======== */}
-      <section className="bg-azul-profundo text-white">
-        <div className={`${container} py-20 md:py-24 flex flex-col md:flex-row md:items-center md:justify-between gap-8`}>
-          <div>
-            <h2 className="font-heading text-2xl sm:text-3xl font-bold max-w-xl mb-3">
-              ¿Necesita asesoría sobre cuál instrumento aplica a su entidad?
-            </h2>
-            <p className="text-sm sm:text-base text-white/75 max-w-xl">
-              Nuestro equipo de especialistas le ayudará a identificar la solución más adecuada para su caso.
-            </p>
-          </div>
-          <Button to="/contacto" variant="primary" icon="fas fa-arrow-right">
-            Hablar con un experto
-          </Button>
-        </div>
-      </section>
+      <CtaBand
+        title="¿Necesita asesoría sobre cuál instrumento aplica a su entidad?"
+        text="Nuestro equipo de especialistas le ayudará a identificar la solución más adecuada para su caso."
+      >
+        <Button to="/contacto" variant="primary" icon="fas fa-arrow-right">
+          Hablar con un experto
+        </Button>
+      </CtaBand>
     </>
   );
 }

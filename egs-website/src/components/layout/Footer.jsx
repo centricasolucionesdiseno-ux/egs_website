@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import logoLight from '../../assets/images/egs-logo.png';
 import logoDark from '../../assets/images/egs-logo-dark.png';
+import { SOCIAL } from '../../data/company';
 
 const linkClass = 'hover:text-cyan-texto transition-colors';
 const headingClass = 'font-heading text-lg font-bold text-ink mb-4 border-b border-line pb-2';
 
 export default function Footer() {
+  const redes = SOCIAL.filter((r) => r.url);
+
   return (
     <footer className="bg-surface text-muted pt-16 pb-8 border-t border-line">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -17,6 +20,23 @@ export default function Footer() {
           <p className="text-sm leading-relaxed">
             Firma consultora especializada en gestión documental para entidades públicas y privadas de Colombia. Más de 10 años transformando la información en eficiencia.
           </p>
+          {redes.length > 0 && (
+            <ul aria-label="Redes sociales" className="flex gap-3 pt-2">
+              {redes.map((r) => (
+                <li key={r.name}>
+                  <a
+                    href={r.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${r.name} de EGS (se abre en una pestaña nueva)`}
+                    className="w-10 h-10 rounded-md border border-line flex items-center justify-center text-muted hover:text-cyan-texto hover:border-cyan-texto transition-colors focus-visible:outline-2 focus-visible:outline-cyan-acento"
+                  >
+                    <i className={r.icon} aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <nav aria-label="Navegación del pie de página">

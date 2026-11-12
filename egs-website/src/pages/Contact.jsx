@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
+import PageHeader from '../components/ui/PageHeader';
 
 const container = 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8';
 
@@ -22,15 +23,16 @@ const interests = [
 ];
 
 const channels = [
-  { icon: 'fas fa-phone', label: 'Teléfono', text: '300 205 7325', href: 'tel:+573002057325' },
+  { icon: 'fas fa-phone', label: 'Teléfono fijo', text: '601 322 5214', href: 'tel:+576013225214' },
+  { icon: 'fas fa-mobile-screen', label: 'Móvil', text: '300 205 7325', href: 'tel:+573002057325' },
   { icon: 'fas fa-envelope', label: 'Correo', text: EMAIL, href: `mailto:${EMAIL}` },
   { icon: 'fab fa-whatsapp', label: 'WhatsApp', text: 'Escríbanos por WhatsApp', href: 'https://wa.me/573002057325', external: true },
   { icon: 'fas fa-location-dot', label: 'Ubicación', text: 'Bogotá D.C., Colombia' },
 ];
 
 const field =
-  'w-full border border-line rounded-md px-4 py-3 text-base text-gris-oscuro bg-white placeholder:text-gray-400 focus:outline-none focus:border-cyan-acento focus:ring-2 focus:ring-cyan-acento/40';
-const labelClass = 'block text-sm font-semibold text-azul-profundo mb-1.5';
+  'w-full border border-line rounded-md px-4 py-3 text-base text-body bg-surface placeholder:text-muted focus:outline-none focus:border-cyan-acento focus:ring-2 focus:ring-cyan-acento/40';
+const labelClass = 'block text-sm font-semibold text-ink mb-1.5';
 
 export default function Contact() {
   const [status, setStatus] = useState('idle'); // idle | sending | sent | mailto | error
@@ -78,32 +80,17 @@ export default function Contact() {
 
   return (
     <>
-      <section className="hero-glow bg-gris-bg border-b border-line">
-        <div className={`${container} pt-12 pb-16 md:pb-24`}>
-          <nav aria-label="Ruta de navegación" className="text-xs text-gris-medio mb-10">
-            <ol className="flex items-center gap-2">
-              <li>
-                <Link to="/" className="hover:text-azul-profundo">Inicio</Link>
-              </li>
-              <li aria-hidden="true"><i className="fas fa-chevron-right text-[10px]" /></li>
-              <li aria-current="page" className="font-semibold text-azul-profundo">Contacto</li>
-            </ol>
-          </nav>
-          <span className="text-xs font-bold tracking-widest uppercase text-cyan-texto block mb-3">Contáctenos</span>
-          <h1 className="text-4xl sm:text-5xl font-bold font-heading text-azul-profundo leading-[1.1] tracking-tight max-w-3xl mb-6">
-            Cuéntenos cómo está hoy su archivo
-          </h1>
-          <p className="text-base sm:text-lg text-gris-medio leading-relaxed max-w-2xl">
-            Déjenos sus datos y el servicio que le interesa. Le proponemos una ruta de organización, digitalización y
-            preservación ajustada a su entidad.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        crumb="Contacto"
+        label="Contáctenos"
+        title="Cuéntenos cómo está hoy su archivo"
+        description="Déjenos sus datos y el servicio que le interesa. Le proponemos una ruta de organización, digitalización y preservación ajustada a su entidad."
+      />
 
-      <section className="bg-white py-20 md:py-28">
+      <section className="bg-surface py-20 md:py-28">
         <div className={`${container} grid md:grid-cols-12 gap-12`}>
           <div className="md:col-span-4">
-            <h2 className="font-heading text-xl font-semibold text-azul-profundo mb-6">Otros canales</h2>
+            <h2 className="font-heading text-xl font-semibold text-ink mb-6">Otros canales</h2>
             <ul className="divide-y divide-line border-y border-line">
               {channels.map((c) => (
                 <li key={c.label} className="flex items-start gap-4 py-4">
@@ -111,17 +98,17 @@ export default function Contact() {
                     <i className={c.icon} aria-hidden="true" />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-xs font-semibold tracking-wider uppercase text-gris-medio">{c.label}</p>
+                    <p className="text-xs font-semibold tracking-wider uppercase text-muted">{c.label}</p>
                     {c.href ? (
                       <a
                         href={c.href}
                         {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                        className="text-sm font-medium text-azul-profundo hover:text-cyan-texto wrap-break-words"
+                        className="text-sm font-medium text-ink hover:text-cyan-texto break-words"
                       >
                         {c.text}
                       </a>
                     ) : (
-                      <p className="text-sm font-medium text-azul-profundo">{c.text}</p>
+                      <p className="text-sm font-medium text-ink">{c.text}</p>
                     )}
                   </div>
                 </li>
@@ -130,7 +117,7 @@ export default function Contact() {
           </div>
 
           <div className="md:col-span-8">
-            <form onSubmit={handleSubmit} className="bg-white border border-line rounded-card p-6 sm:p-10 shadow-soft">
+            <form onSubmit={handleSubmit} className="bg-surface border border-line rounded-card p-6 sm:p-10 shadow-soft">
               <div className="grid sm:grid-cols-2 gap-x-6 gap-y-5">
                 <div>
                   <label htmlFor="nombre" className={labelClass}>Nombre completo</label>
@@ -162,11 +149,11 @@ export default function Contact() {
                   <textarea id="mensaje" name="mensaje" rows={5} required className={field} />
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="acepto" className="flex items-start gap-3 text-sm text-gris-medio">
+                  <label htmlFor="acepto" className="flex items-start gap-3 text-sm text-muted">
                     <input id="acepto" name="acepto" type="checkbox" required className="mt-1 w-4 h-4 accent-cyan-acento shrink-0" />
                     <span>
                       Autorizo el tratamiento de mis datos personales conforme a la{' '}
-                      <Link to="/politica-de-privacidad" className="font-semibold text-azul-profundo underline">
+                      <Link to="/politica-de-privacidad" className="font-semibold text-ink underline">
                         política de privacidad
                       </Link>
                       .
@@ -179,7 +166,7 @@ export default function Contact() {
                 <Button type="submit" variant="primary" icon="fas fa-paper-plane" disabled={status === 'sending'}>
                   {status === 'sending' ? 'Enviando…' : 'Enviar solicitud'}
                 </Button>
-                <p role="status" aria-live="polite" className="text-sm text-gris-medio">
+                <p role="status" aria-live="polite" className="text-sm text-muted">
                   {status === 'sent' && 'Gracias, recibimos su solicitud. Le responderemos pronto.'}
                   {status === 'mailto' && 'Se abrió su programa de correo con el mensaje listo para enviar.'}
                   {status === 'error' && `No pudimos enviar el formulario. Escríbanos a ${EMAIL}.`}

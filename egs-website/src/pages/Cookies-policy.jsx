@@ -8,7 +8,7 @@ const doc = {
   effective: COMPANY.effective,
   summary: [
     { icon: 'fas fa-eye-slash', text: 'No usamos cookies de analítica, publicidad ni redes sociales.' },
-    { icon: 'fas fa-hard-drive', text: 'Hoy el sitio no guarda cookies propias ni datos en su navegador.' },
+    { icon: 'fas fa-hard-drive', text: 'Solo guardamos su tema preferido (claro u oscuro), y únicamente si usted lo cambia.' },
     { icon: 'fas fa-font', text: 'Las tipografías se cargan desde Google Fonts, que recibe datos técnicos de su navegador.' },
     { icon: 'fas fa-bell', text: 'Si algún día usamos cookies opcionales, le pediremos permiso antes.' },
   ],
@@ -20,9 +20,9 @@ const doc = {
         { p: 'No dañan su dispositivo y puede borrarlas cuando quiera. En este sitio no las usamos para identificarlo, rastrearlo ni mostrarle publicidad.' },
         { h: '¿Qué hace este sitio hoy?' },
         { ul: [
-          'No guarda sus preferencias ni borradores de formularios en su navegador.',
+          'Guarda en su navegador solo su preferencia de tema (claro u oscuro), si usted la cambia.',
           'Carga las tipografías desde un servicio externo (Google Fonts).',
-          'Enlaza a WhatsApp, un servicio externo con sus propias políticas.',
+          'Enlaza a WhatsApp y a nuestras redes sociales, servicios externos con sus propias políticas.',
         ] },
       ],
     },
@@ -32,7 +32,7 @@ const doc = {
         { p: 'Según su finalidad, las cookies pueden ser técnicas (necesarias para que el sitio funcione), de preferencias (recuerdan sus elecciones), de análisis (miden cómo se usa el sitio), de publicidad (crean perfiles para mostrar anuncios) y de terceros (las gestiona un servicio externo integrado en el sitio).' },
         { compare: {
           yes: { title: 'Lo que usamos', items: [
-            'Cookies técnicas o de preferencias propias: ninguna por ahora.',
+            'De preferencias: su tema claro u oscuro, guardado solo en su dispositivo.',
             'De terceros: la entrega de tipografías desde Google Fonts.',
           ] },
           no: { title: 'Lo que no usamos', items: [
@@ -47,12 +47,14 @@ const doc = {
     {
       title: '3. Qué guardamos exactamente',
       blocks: [
-        { p: 'Esta es la lista completa de lo que el sitio puede guardar o intercambiar con su navegador. EGS no guarda ninguna cookie propia ni usa el almacenamiento local o de sesión. Lo que sigue corresponde a servicios de terceros.' },
+        { p: 'Esta es la lista completa de lo que el sitio guarda en su navegador. Lo que guarda EGS se queda solo en su dispositivo: no lo enviamos a ningún servidor ni lo usamos para identificarlo. Como es necesario para una función que usted mismo usa, no mostramos un aviso de aceptación. Las demás filas corresponden a servicios de terceros.' },
         { table: {
           head: ['Nombre', 'Para qué sirve', 'Duración', 'De quién'],
           rows: [
+            ['theme (almacenamiento local)', 'Recordar si prefiere el modo claro u oscuro. Solo se guarda si usted cambia el tema.', 'Hasta que lo borre', 'EGS'],
             ['Tipografías (Google Fonts)', 'Cargar las tipografías del sitio. Google recibe datos técnicos del navegador, como la dirección IP.', 'La que defina Google', 'Google'],
             ['Enlaces a WhatsApp', 'Abrir una conversación con EGS. Solo se activa si usted pulsa el enlace.', 'La que defina WhatsApp', 'WhatsApp'],
+            ['Enlaces a redes sociales', 'Abrir nuestros perfiles en Facebook, Instagram, TikTok o X. Solo se activa si usted pulsa el enlace; no cargamos botones ni píxeles de redes.', 'La que defina cada red', 'Cada red social'],
           ],
         } },
         { p: 'Los servicios de terceros aplican sus propias políticas. Si bloquea estas conexiones en su navegador, el sitio seguirá funcionando con una tipografía del sistema.' },
@@ -61,6 +63,7 @@ const doc = {
     {
       title: '4. Cómo gestionar o borrar las cookies',
       blocks: [
+        { p: 'Si borra lo que guarda EGS en este navegador, el sitio seguirá funcionando igual: solo volverá al tema que corresponda a su dispositivo.' },
         { p: 'Puede aceptar, bloquear o borrar cookies de cualquier sitio, incluidas las de terceros, desde la configuración de su navegador:' },
         { ul: [
           'Chrome: Configuración → Privacidad y seguridad → Cookies de terceros.',

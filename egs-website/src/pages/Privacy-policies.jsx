@@ -44,7 +44,7 @@ const doc = {
         { h: 'Datos técnicos' },
         { p: 'Como cualquier sitio web, el servidor que aloja este sitio puede registrar datos técnicos básicos de cada visita (dirección IP, navegador, fecha y hora) con fines de seguridad y funcionamiento. No los usamos para identificarlo ni para crear perfiles.' },
         { h: 'Contenido de terceros' },
-        { p: 'Este sitio carga sus tipografías desde Google Fonts, por lo que Google puede recibir datos técnicos de su navegador (como la dirección IP) según su propia política de privacidad. Si usted pulsa un enlace de WhatsApp, la conversación se rige por las políticas de ese servicio.' },
+        { p: 'Este sitio carga sus tipografías desde Google Fonts, por lo que Google puede recibir datos técnicos de su navegador (como la dirección IP) según su propia política de privacidad. Si usted pulsa un enlace de WhatsApp o de nuestras redes sociales (Facebook, Instagram, TikTok y X), la navegación se rige por las políticas de ese servicio.' },
       ],
     },
     {
@@ -90,7 +90,8 @@ const doc = {
     {
       title: '7. Cookies y almacenamiento local',
       blocks: [
-        { p: 'Este sitio no usa cookies publicitarias ni de analítica, y no rastrea su navegación. Actualmente tampoco guarda cookies propias ni datos en el almacenamiento de su navegador.' },
+        { p: 'Este sitio no usa cookies publicitarias ni de analítica, y no rastrea su navegación.' },
+        { p: 'Solo guarda en su propio navegador (almacenamiento local, sin enviarlo a nuestros servidores) un dato para mejorar su experiencia: su preferencia de tema, claro u oscuro, y únicamente si usted la cambia. Puede borrarlo en cualquier momento desde la configuración de su navegador.' },
         { links: [{ label: 'Política de Cookies', to: '/politica-de-cookies' }] },
       ],
     },

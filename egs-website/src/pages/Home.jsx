@@ -1,19 +1,23 @@
 import { useEffect } from 'react';
 import Button from '../components/ui/Button';
 import BentoCard from '../components/ui/BentoCard';
+import CtaBand from '../components/ui/CtaBand';
 import SectionHeader from '../components/ui/SectionHeader';
 import TestimonialCard from '../components/ui/TestimonialCard';
 import Reveal from '../components/ui/Reveal';
 import VaultPreview from '../components/ui/VaultPreview';
+import contraloriaLogo from '../assets/images/contraloria.png';
+import acueductoLogo from '../assets/images/acueducto.png';
 
 const container = 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8';
 const section = 'py-20 md:py-28';
 
-const chips = ['Lineamientos AGN', 'Estándar OAIS', 'Bogotá, Colombia'];
+const chips = ['Empresa certificada · Bogotá, Colombia', 'Lineamientos AGN', 'Estándar OAIS'];
 
 const clients = [
-  'Contraloría General de la República',
-  'Empresa de Acueducto y Alcantarillado de Bogotá',
+  { name: 'Contraloría General de la República', type: 'Entidad pública nacional', logo: contraloriaLogo },
+  { name: 'Acueducto de Bogotá (EAAB)', type: 'Empresa de servicios públicos', logo: acueductoLogo },
+  { name: 'Alcaldías de Envigado, La Estrella y Segovia', type: 'Entidades municipales', icon: 'fas fa-city' },
 ];
 
 const stats = [
@@ -76,28 +80,29 @@ export default function Home() {
   return (
     <>
       {/* ======== HERO ======== */}
-      <section className="hero-glow bg-gris-bg border-b border-line">
+      <section className="hero-glow bg-surface-alt border-b border-line">
         <div className={`${container} pt-20 pb-20 md:pt-28 md:pb-28 grid md:grid-cols-12 gap-12 items-center`}>
           <div className="md:col-span-7">
             <ul className="flex flex-wrap gap-2 mb-8" aria-label="Enfoque">
-              {chips.map((c) => (
+              {chips.map((c, i) => (
                 <li
                   key={c}
-                  className="text-xs font-semibold tracking-wider uppercase text-azul-medio bg-white border border-line rounded-full px-3 py-1"
+                  className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-chip-text bg-surface border border-line rounded-full px-3 py-1"
                 >
+                  {i === 0 && <i className="fas fa-shield-halved text-cyan-texto" aria-hidden="true" />}
                   {c}
                 </li>
               ))}
             </ul>
 
-            <h1 className="text-4xl sm:text-5xl font-bold font-heading text-azul-profundo leading-[1.1] tracking-tight mb-6">
-              Gestión documental que se puede{' '}
-              <span className="text-cyan-texto">auditar, preservar y consultar</span>
+            <h1 className="text-3xl sm:text-4xl font-bold font-heading text-ink leading-[1.15] tracking-tight mb-6">
+              Transformamos la gestión documental para garantizar la{' '}
+              <span className="text-cyan-texto">preservación digital, la eficiencia y el control</span> de la información
             </h1>
 
-            <p className="text-base sm:text-lg text-gris-medio leading-relaxed max-w-xl mb-10">
-              Organización, digitalización, preservación digital y custodia de archivos para entidades del sector
-              público y privado.
+            <p className="text-base sm:text-lg text-muted leading-relaxed max-w-xl mb-10">
+              Somos especialistas en organización, digitalización, preservación digital, custodia de archivos y
+              soluciones tecnológicas para entidades del sector público y privado.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -116,42 +121,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ======== CLIENTES ======== */}
-      <section aria-label="Clientes" className="bg-white border-b border-line">
-        <div className={`${container} py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12`}>
-          <p className="text-xs font-semibold tracking-wider uppercase text-gris-medio shrink-0">
-            Entidades que confían en EGS
-          </p>
-          <ul className="flex flex-wrap gap-x-10 gap-y-2 font-heading font-semibold text-azul-profundo/70">
-            {clients.map((c) => (
-              <li key={c}>{c}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* ======== CIFRAS ======== */}
-      <section aria-label="Cifras" className={`bg-white ${section}`}>
+      <section aria-label="Cifras" className={`bg-surface ${section}`}>
         <div className={`${container} grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6`}>
           {stats.map((s, i) => (
             <Reveal key={s.label} index={i} className="border-l border-line pl-6">
-              <div className="font-heading text-4xl md:text-5xl font-bold text-azul-profundo leading-none mb-3">
+              <div className="font-heading text-4xl md:text-5xl font-bold text-ink leading-none mb-3">
                 {s.value}
               </div>
-              <div className="text-sm text-gris-medio">{s.label}</div>
+              <div className="text-sm text-muted">{s.label}</div>
             </Reveal>
           ))}
         </div>
       </section>
 
       {/* ======== SERVICIOS (BENTO) ======== */}
-      <section className={`bg-white ${section} pt-0 md:pt-0`}>
+      <section className={`bg-surface ${section} pt-0 md:pt-0`}>
         <div className={container}>
           <SectionHeader
             center={false}
             label="Nuestros servicios"
             title="Soluciones documentales para su organización"
-            description="Organizamos, protegemos, preservamos y administramos la información de su entidad."
+            description="Ofrecemos soluciones integrales para organizar, proteger, preservar y administrar la información de su organización."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
@@ -161,12 +152,12 @@ export default function Home() {
                 icon="fas fa-file-arrow-up"
                 label="Más solicitado"
                 title="Digitalización y preservación digital"
-                description="Transformamos sus documentos físicos en información digital organizada, segura y accesible, sentando las bases para su preservación a largo plazo."
+                description="Transformamos sus documentos físicos en información digital organizada, segura y fácilmente accesible, sentando las bases para su preservación digital a largo plazo."
                 to="/servicios#digitalizacion"
               >
                 <ul className="mt-5 space-y-2">
                   {['Control de calidad documental', 'Indexación y metadatos descriptivos'].map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-gris-medio">
+                    <li key={f} className="flex items-start gap-2 text-sm text-muted">
                       <i className="fas fa-circle-check text-cyan-texto text-xs mt-1.5" aria-hidden="true" />
                       <span>{f}</span>
                     </li>
@@ -180,8 +171,8 @@ export default function Home() {
                 className="w-full"
                 icon="fas fa-cloud-arrow-up"
                 label="Tecnología"
-                title="Nebula Vault, bodega virtual"
-                description="Software OAIS de preservación digital con acceso 24/7. Tecnología propia que automatiza el ciclo de vida de la información institucional."
+                title="Nebula Vault — Bodega Virtual"
+                description="Software OAIS de preservación digital con acceso 24/7. Tecnología propia que automatiza y optimiza todo el ciclo de vida de la información institucional."
                 to="/servicios#nebula"
               />
             </Reveal>
@@ -192,7 +183,7 @@ export default function Home() {
                 icon="fas fa-boxes-stacked"
                 label="Archivística"
                 title="Organización integral de archivos"
-                description="Clasificación, inventarios y fondos acumulados con cumplimiento de la normativa archivística."
+                description="Organizamos y estructuramos sus archivos para facilitar el acceso a la información y garantizar el cumplimiento de la normativa archivística."
                 to="/servicios#organizacion"
               />
             </Reveal>
@@ -215,7 +206,7 @@ export default function Home() {
                 label="Consultoría"
                 title="Diagnóstico y PGD"
                 description="Instrumentos archivísticos exigidos por la normativa del Archivo General de la Nación."
-                to="/servicios"
+                to="/servicios#instrumentos"
               />
             </Reveal>
           </div>
@@ -228,27 +219,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ======== POR QUÉ EGS ======== */}
-      <section className={`bg-gris-bg border-y border-line ${section}`}>
+      {/* ======== QUIÉNES SOMOS + POR QUÉ EGS ======== */}
+      <section className={`bg-surface-alt border-y border-line ${section}`}>
         <div className={`${container} grid md:grid-cols-12 gap-12`}>
-          <div className="md:col-span-4 md:sticky md:top-28 md:self-start">
+          <div className="md:col-span-5 md:sticky md:top-28 md:self-start">
             <SectionHeader
               center={false}
-              label="Por qué EGS"
-              title="Una sola firma para todo el ciclo del documento"
-              description="Del archivo físico a la preservación digital, bajo norma y con tecnología propia."
+              label="Quiénes somos"
+              title="Gestión documental y preservación digital integradas"
+              description="EGS Soluciones Integrales S.A.S. es una firma consultora especializada en gestión documental que ofrece soluciones para entidades públicas y privadas. Contamos con un equipo multidisciplinario que combina experiencia técnica y tecnológica para diseñar e implementar procesos adaptados a las necesidades de cada organización."
             />
+            <p className="-mt-6 mb-8 text-sm sm:text-base text-muted max-w-2xl">
+              Trabajamos para optimizar la administración de la información mediante procesos seguros, eficientes y
+              confiables, promoviendo el cumplimiento de la normativa archivística, la trazabilidad documental y la
+              preservación del patrimonio documental.
+            </p>
+            <div className="border-l border-line pl-6 mb-8">
+              <div className="font-heading text-4xl font-bold text-ink leading-none mb-2">+10</div>
+              <div className="text-sm text-muted">Años de experiencia en gestión documental</div>
+            </div>
+            <Button to="/acerca-de" variant="outline" icon="fas fa-arrow-right">
+              Conozca más sobre EGS
+            </Button>
           </div>
 
-          <ol className="md:col-span-8 divide-y divide-line border-y border-line">
+          <ol className="md:col-span-7 divide-y divide-line border-y border-line self-start">
             {pillars.map((p, i) => (
               <Reveal as="li" key={p.title} index={i} className="grid grid-cols-[3rem_1fr] gap-4 py-8">
                 <span className="font-heading text-sm font-semibold text-cyan-texto pt-1">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div>
-                  <h3 className="font-heading text-lg font-semibold text-azul-profundo mb-2">{p.title}</h3>
-                  <p className="text-sm text-gris-medio leading-relaxed max-w-xl">{p.text}</p>
+                  <h3 className="font-heading text-lg font-semibold text-ink mb-2">{p.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed max-w-xl">{p.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -256,8 +259,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ======== CLIENTES DE ALTO NIVEL ======== */}
+      <section className={`bg-surface ${section}`}>
+        <div className={container}>
+          <SectionHeader
+            center={false}
+            label="Clientes de alto nivel"
+            title="Entidades que confían en EGS"
+            description="Hemos ejecutado proyectos de gran escala para algunas de las instituciones más importantes del país."
+          />
+          <ul className="grid sm:grid-cols-3 gap-6">
+            {clients.map((c, i) => (
+              <Reveal as="li" key={c.name} index={i} className="flex">
+                <div className="w-full border border-line rounded-card p-7">
+                  <span className="w-14 h-14 rounded-xl border border-line bg-white flex items-center justify-center p-2.5 mb-5 text-xl text-cyan-texto">
+                    {c.logo ? (
+                      <img src={c.logo} alt="" width="80" height="80" className="max-h-full max-w-full object-contain" />
+                    ) : (
+                      <i className={c.icon} aria-hidden="true" />
+                    )}
+                  </span>
+                  <h3 className="font-heading text-lg font-semibold text-ink mb-1.5">{c.name}</h3>
+                  <p className="text-xs font-semibold tracking-wider uppercase text-muted">{c.type}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+          <div className="mt-10">
+            <Button to="/proyectos" variant="outline" icon="fas fa-arrow-right">
+              Ver casos de éxito
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* ======== PROCESO ======== */}
-      <section className={`bg-white ${section}`}>
+      <section className={`bg-surface-alt border-y border-line ${section}`}>
         <div className={container}>
           <SectionHeader
             center={false}
@@ -275,8 +312,8 @@ export default function Home() {
                 <span className="font-heading text-sm font-semibold text-cyan-texto">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="font-heading text-lg font-semibold text-azul-profundo mt-2 mb-2">{s.title}</h3>
-                <p className="text-sm text-gris-medio leading-relaxed">{s.text}</p>
+                <h3 className="font-heading text-lg font-semibold text-ink mt-2 mb-2">{s.title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{s.text}</p>
               </Reveal>
             ))}
           </ol>
@@ -284,7 +321,7 @@ export default function Home() {
       </section>
 
       {/* ======== TESTIMONIOS ======== */}
-      <section className={`bg-gris-bg border-y border-line ${section}`}>
+      <section className={`bg-surface ${section}`}>
         <div className={container}>
           <SectionHeader center={false} label="Lo que dicen nuestros clientes" title="Satisfacción comprobada" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -309,7 +346,7 @@ export default function Home() {
       </section>
 
       {/* ======== FAQ ======== */}
-      <section className={`bg-white ${section}`}>
+      <section className={`bg-surface-alt border-y border-line ${section}`}>
         <div className={`${container} grid md:grid-cols-12 gap-12`}>
           <div className="md:col-span-4">
             <SectionHeader center={false} label="Preguntas frecuentes" title="Lo que suelen preguntarnos" />
@@ -317,14 +354,14 @@ export default function Home() {
           <div className="md:col-span-8 border-t border-line">
             {faqs.map((f) => (
               <details key={f.q} className="group border-b border-line py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-heading font-semibold text-azul-profundo focus-visible:outline-2 focus-visible:outline-cyan-acento [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-heading font-semibold text-ink focus-visible:outline-2 focus-visible:outline-cyan-acento [&::-webkit-details-marker]:hidden">
                   {f.q}
                   <span aria-hidden="true" className="text-cyan-texto shrink-0">
                     <i className="fas fa-plus group-open:hidden" />
                     <i className="fas fa-minus hidden group-open:inline" />
                   </span>
                 </summary>
-                <p className="mt-3 max-w-2xl text-sm text-gris-medio leading-relaxed">{f.a}</p>
+                <p className="mt-3 max-w-2xl text-sm text-muted leading-relaxed">{f.a}</p>
               </details>
             ))}
           </div>
@@ -332,37 +369,26 @@ export default function Home() {
       </section>
 
       {/* ======== CTA FINAL ======== */}
-      <section className="bg-azul-profundo text-white">
-        <div className={`${container} py-20 md:py-24 flex flex-col md:flex-row md:items-center md:justify-between gap-8`}>
-          <div>
-            <h2 className="font-heading text-2xl sm:text-3xl font-bold max-w-xl mb-3">
-              Cuéntenos cómo está hoy su archivo
-            </h2>
-            <p className="text-sm sm:text-base text-white/75 max-w-xl">
-              Le proponemos una ruta de organización, digitalización y preservación ajustada a su entidad.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            <Button to="/contacto" variant="primary" icon="fas fa-paper-plane">
-              Solicitar cotización
-            </Button>
-            <Button href="https://wa.me/573002057325" variant="secondary" icon="fab fa-whatsapp">
-              WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ======== BOTÓN FLOTANTE WHATSAPP ======== */}
-      <a
-        href="https://wa.me/573002057325"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chatear por WhatsApp"
-        className="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition-all z-40"
+      <CtaBand
+        label="Impulse su transformación"
+        title="Impulse la transformación documental de su entidad"
+        text="Contáctenos hoy y descubra cómo podemos optimizar la gestión de su información institucional."
+        extra={
+          <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold">
+            <i className="fas fa-phone text-cyan-acento" aria-hidden="true" />
+            <a href="tel:+576013225214" className="hover:text-cyan-acento">601 322 5214</a>
+            <span aria-hidden="true" className="text-white/40">|</span>
+            <a href="tel:+573002057325" className="hover:text-cyan-acento">300 205 7325</a>
+          </p>
+        }
       >
-        <i className="fab fa-whatsapp" aria-hidden="true" />
-      </a>
+        <Button to="/contacto" variant="primary" icon="fas fa-arrow-right">
+          Solicitar cotización
+        </Button>
+        <Button to="/servicios" variant="secondary">
+          Explorar servicios
+        </Button>
+      </CtaBand>
     </>
   );
 }

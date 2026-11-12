@@ -6,11 +6,11 @@ export default function SectionHeader({ label, title, description, center = true
           {label}
         </span>
       )}
-      <h2 className={`text-2xl sm:text-3xl font-extrabold font-heading mb-4 ${dark ? 'text-white' : 'text-azul-profundo'}`}>
+      <h2 className={`text-2xl sm:text-3xl font-extrabold font-heading mb-4 ${dark ? 'text-white' : 'text-ink'}`}>
         {title}
       </h2>
       {description && (
-        <p className={`text-sm sm:text-base max-w-2xl ${center ? 'mx-auto' : ''} ${dark ? 'text-gray-300' : 'text-gray-600'}`}>
+        <p className={`text-sm sm:text-base max-w-2xl ${center ? 'mx-auto' : ''} ${dark ? 'text-gray-300' : 'text-muted'}`}>
           {description}
         </p>
       )}

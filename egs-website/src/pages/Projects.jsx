@@ -3,6 +3,7 @@ import Button from '../components/ui/Button';
 import CaseBlock from '../components/ui/CaseBlock';
 import CtaBand from '../components/ui/CtaBand';
 import PageHeader from '../components/ui/PageHeader';
+import ProjectGallery from '../components/ui/ProjectGallery';
 import Reveal from '../components/ui/Reveal';
 import SectionHeader from '../components/ui/SectionHeader';
 import contraloriaLogo from '../assets/images/contraloria.png';
@@ -65,10 +66,18 @@ const otherClients = [
   { name: 'Alcaldía de Segovia', text: 'Custodia y organización de fondos acumulados municipales. Antioquia.' },
 ];
 
-// Cuando tenga las fotos del portafolio, agréguelas aquí como { src, alt, caption } y la galería aparece sola.
-// Títulos previstos en la maqueta: Digitalización de documentos, Organización de archivos, Custodia en bodega,
-// Medios magnéticos, Nebula Vault, Microfilmación, Logística documental y Equipo EGS.
-const gallery = [];
+// Fotos en public/images/proyectos/ (ver nombres de archivo). Si una foto aún no existe, se muestra un marcador.
+const photo = (file) => `/images/proyectos/${file}`;
+const gallery = [
+  { id: 'digitalizacion', icon: 'fas fa-file-arrow-up', title: 'Digitalización de documentos', caption: 'Proceso de digitalización masiva de documentos', src: photo('digitalizacion.jpg') },
+  { id: 'organizacion', icon: 'fas fa-boxes-stacked', title: 'Organización de archivos', caption: 'Organización de fondos acumulados', src: photo('organizacion.jpg') },
+  { id: 'custodia', icon: 'fas fa-warehouse', title: 'Custodia en bodega', caption: 'Bodega de custodia documental', src: photo('custodia.jpg') },
+  { id: 'medios', icon: 'fas fa-compact-disc', title: 'Medios magnéticos', caption: 'Lectura de medios magnéticos', src: photo('medios-magneticos.jpg') },
+  { id: 'nebula', icon: 'fas fa-cloud-arrow-up', title: 'Nebula Vault', caption: 'Nebula Vault — Bodega virtual', src: photo('nebula-vault.jpg') },
+  { id: 'microfilmacion', icon: 'fas fa-film', title: 'Microfilmación', caption: 'Microfilmación de documentos históricos', src: photo('microfilmacion.jpg') },
+  { id: 'logistica', icon: 'fas fa-truck-moving', title: 'Logística documental', caption: 'Logística documental — Traslado seguro', src: photo('logistica.jpg') },
+  { id: 'equipo', icon: 'fas fa-people-group', title: 'Equipo EGS', caption: 'Equipo profesional EGS en acción', src: photo('equipo.jpg') },
+];
 
 export default function Projects() {
   useEffect(() => {
@@ -84,7 +93,7 @@ export default function Projects() {
         description="Hemos ejecutado proyectos de alto nivel para entidades de referencia nacional, demostrando capacidad técnica, cumplimiento y resultados medibles."
       />
 
-      <section className={`bg-white ${section}`}>
+      <section className={`bg-surface ${section}`}>
         <div className={`${container} space-y-8`}>
           {cases.map((c, i) => (
             <Reveal key={c.clientName}>
@@ -94,18 +103,18 @@ export default function Projects() {
         </div>
       </section>
 
-      <section className={`bg-gris-bg border-y border-line ${section}`}>
+      <section className={`bg-surface-alt border-y border-line ${section}`}>
         <div className={container}>
           <SectionHeader center={false} label="También hemos trabajado con" title="Otros clientes destacados" />
           <ul className="grid sm:grid-cols-3 gap-6">
             {otherClients.map((c, i) => (
               <Reveal as="li" key={c.name} index={i} className="flex">
-                <div className="w-full bg-white border border-line rounded-card p-7">
+                <div className="w-full bg-surface border border-line rounded-card p-7">
                   <span className="w-11 h-11 rounded-lg bg-cyan-claro text-cyan-texto flex items-center justify-center text-lg mb-5">
                     <i className="fas fa-building-columns" aria-hidden="true" />
                   </span>
-                  <h3 className="font-heading text-lg font-semibold text-azul-profundo mb-2">{c.name}</h3>
-                  <p className="text-sm text-gris-medio leading-relaxed">{c.text}</p>
+                  <h3 className="font-heading text-lg font-semibold text-ink mb-2">{c.name}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{c.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -113,33 +122,17 @@ export default function Projects() {
         </div>
       </section>
 
-      {gallery.length > 0 && (
-        <section id="galeria" className={`scroll-mt-28 bg-white ${section}`}>
-          <div className={container}>
-            <SectionHeader
-              center={false}
-              label="Galería de proyectos"
-              title="Nuestro trabajo en imágenes"
-              description="Evidencia visual de los procesos de digitalización, custodia y organización documental que ejecutamos para nuestros clientes."
-            />
-            <ul className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-              {gallery.map((g) => (
-                <li key={g.src}>
-                  <figure>
-                    <img
-                      src={g.src}
-                      alt={g.alt}
-                      loading="lazy"
-                      className="w-full aspect-[4/3] object-cover rounded-card border border-line"
-                    />
-                    <figcaption className="mt-2 text-sm text-gris-medio">{g.caption}</figcaption>
-                  </figure>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
+      <section id="galeria" className={`scroll-mt-28 bg-surface ${section}`}>
+        <div className={container}>
+          <SectionHeader
+            center={false}
+            label="Galería de proyectos"
+            title="Nuestro trabajo en imágenes"
+            description="Evidencia visual de los procesos de digitalización, custodia y organización documental que ejecutamos para nuestros clientes."
+          />
+          <ProjectGallery items={gallery} />
+        </div>
+      </section>
 
       <CtaBand
         label="¿Su entidad es el próximo caso de éxito?"

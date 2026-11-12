@@ -57,24 +57,24 @@ export default function About() {
       />
 
       {/* ======== MISIÓN Y VISIÓN ======== */}
-      <section className={`bg-white ${section}`}>
+      <section className={`bg-surface ${section}`}>
         <div className={container}>
           <SectionHeader center={false} label="Nuestra razón de ser" title="Misión y Visión" />
           <div className="grid sm:grid-cols-2 gap-6">
             <Reveal className="flex">
-              <article className="w-full bg-white border border-line rounded-card p-8 sm:p-10">
+              <article className="w-full bg-surface border border-line rounded-card p-8 sm:p-10">
                 <span className={`${iconBox} mb-6`}><i className="fas fa-bullseye" aria-hidden="true" /></span>
-                <h3 className="font-heading text-xl font-semibold text-azul-profundo mb-3">Misión</h3>
-                <p className="text-sm text-gris-medio leading-relaxed">
+                <h3 className="font-heading text-xl font-semibold text-ink mb-3">Misión</h3>
+                <p className="text-sm text-muted leading-relaxed">
                   Brindar servicios especializados en gestión documental para entidades públicas y privadas, mediante soluciones que garanticen el cumplimiento de la normatividad vigente, la transparencia, la trazabilidad de la información y la conservación del patrimonio documental, contribuyendo al fortalecimiento de la eficiencia administrativa a través de procesos seguros, confiables y orientados a la mejora continua.
                 </p>
               </article>
             </Reveal>
             <Reveal index={1} className="flex">
-              <article className="w-full bg-white border border-line rounded-card p-8 sm:p-10">
+              <article className="w-full bg-surface border border-line rounded-card p-8 sm:p-10">
                 <span className={`${iconBox} mb-6`}><i className="fas fa-eye" aria-hidden="true" /></span>
-                <h3 className="font-heading text-xl font-semibold text-azul-profundo mb-3">Visión</h3>
-                <p className="text-sm text-gris-medio leading-relaxed">
+                <h3 className="font-heading text-xl font-semibold text-ink mb-3">Visión</h3>
+                <p className="text-sm text-muted leading-relaxed">
                   Consolidarnos como una empresa líder en soluciones de gestión documental y preservación digital, reconocida por la innovación, seguridad y calidad de nuestros servicios. Trascender en el tiempo preservando el legado del presente para el futuro, consolidándonos como referentes de la conservación del patrimonio documental a través de la memoria histórica como motor de identidad, conocimiento y progreso.
                 </p>
               </article>
@@ -84,7 +84,7 @@ export default function About() {
       </section>
 
       {/* ======== POR QUÉ EGS ======== */}
-      <section className={`bg-gris-bg border-y border-line ${section}`}>
+      <section className={`bg-surface-alt border-y border-line ${section}`}>
         <div className={`${container} grid md:grid-cols-12 gap-12`}>
           <div className="md:col-span-4 md:sticky md:top-28 md:self-start">
             <SectionHeader
@@ -101,8 +101,8 @@ export default function About() {
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div>
-                  <h3 className="font-heading text-lg font-semibold text-azul-profundo mb-2">{p.title}</h3>
-                  <p className="text-sm text-gris-medio leading-relaxed max-w-2xl">{p.text}</p>
+                  <h3 className="font-heading text-lg font-semibold text-ink mb-2">{p.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed max-w-2xl">{p.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -111,7 +111,7 @@ export default function About() {
       </section>
 
       {/* ======== VALORES ======== */}
-      <section className={`bg-white ${section}`}>
+      <section className={`bg-surface ${section}`}>
         <div className={container}>
           <SectionHeader center={false} label="Nuestros valores" title="Los principios que nos guían" />
           <ul className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -119,8 +119,8 @@ export default function About() {
               <Reveal as="li" key={v.title} index={i} className="flex">
                 <div className="w-full border border-line rounded-card p-7">
                   <span className={`${iconBox} mb-5`}><i className={v.icon} aria-hidden="true" /></span>
-                  <h3 className="font-heading text-lg font-semibold text-azul-profundo mb-2">{v.title}</h3>
-                  <p className="text-sm text-gris-medio leading-relaxed">{v.text}</p>
+                  <h3 className="font-heading text-lg font-semibold text-ink mb-2">{v.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{v.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -129,20 +129,20 @@ export default function About() {
       </section>
 
       {/* ======== ALIADO TECNOLÓGICO ======== */}
-      <section className={`bg-gris-bg border-y border-line ${section}`}>
+      <section className={`bg-surface-alt border-y border-line ${section}`}>
         <div className={container}>
           <SectionHeader center={false} label="Respaldo tecnológico" title="Nuestro aliado estratégico" />
           <div className="grid md:grid-cols-12 gap-8 md:gap-12">
             <div className="md:col-span-5">
-              <div className="bg-white border border-line rounded-card p-8 sm:p-10 h-full">
+              <div className="bg-surface border border-line rounded-card p-8 sm:p-10 h-full">
                 <span className={`${iconBox} mb-6`}><i className="fas fa-microchip" aria-hidden="true" /></span>
-                <h3 className="font-heading text-xl font-semibold text-azul-profundo mb-1">
+                <h3 className="font-heading text-xl font-semibold text-ink mb-1">
                   Céntrica Soluciones Innovadoras
                 </h3>
                 <p className="text-xs font-semibold tracking-wider uppercase text-cyan-texto mb-4">
                   Aliado tecnológico oficial de EGS
                 </p>
-                <p className="text-sm text-gris-medio leading-relaxed">
+                <p className="text-sm text-muted leading-relaxed">
                   La alianza con Céntrica Soluciones Innovadoras le otorga a EGS un respaldo tecnológico de primer nivel, que se materializa en soluciones digitales robustas, seguras y alineadas con estándares internacionales.
                 </p>
               </div>
@@ -152,8 +152,8 @@ export default function About() {
                 <li key={a.title} className="flex items-start gap-4 py-6">
                   <span className={iconBox}><i className={a.icon} aria-hidden="true" /></span>
                   <div>
-                    <h3 className="font-heading text-base font-semibold text-azul-profundo mb-1.5">{a.title}</h3>
-                    <p className="text-sm text-gris-medio leading-relaxed">{a.text}</p>
+                    <h3 className="font-heading text-base font-semibold text-ink mb-1.5">{a.title}</h3>
+                    <p className="text-sm text-muted leading-relaxed">{a.text}</p>
                   </div>
                 </li>
               ))}

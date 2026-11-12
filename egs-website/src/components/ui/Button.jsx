@@ -18,7 +18,7 @@ export default function Button({
     // Texto azul profundo sobre cyan: contraste ~4.9:1 (blanco daba ~2.7:1)
     primary: 'bg-cyan-acento hover:bg-cyan-acento/90 text-azul-profundo shadow-sm',
     secondary: 'bg-white/10 hover:bg-white/20 border border-white/20 text-white',
-    outline: 'border-2 border-azul-profundo text-azul-profundo hover:bg-azul-profundo hover:text-white',
+    outline: 'border-2 border-ink text-ink hover:bg-ink hover:text-surface',
   };
 
   const combinedClasses = `${baseStyles} ${variants[variant] || variants.primary} ${className}`;

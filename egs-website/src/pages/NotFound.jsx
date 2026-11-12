@@ -9,13 +9,13 @@ export default function NotFound() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center px-4">
       <div className="text-center">
-        <h1 className="text-6xl font-extrabold text-azul-profundo font-heading mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-8">La página que buscas no existe o ha sido movida.</p>
+        <h1 className="text-6xl font-extrabold text-ink font-heading mb-4">404</h1>
+        <p className="text-xl text-muted mb-8">La página que busca no existe o ha sido movida.</p>
         <Link
           to="/"
-          className="bg-cyan-acento text-azul-profundo px-6 py-3 rounded-md font-semibold hover:bg-cyan-acento/90 transition-all"
+          className="inline-block bg-cyan-acento text-azul-profundo px-6 py-3 rounded-md font-semibold hover:bg-cyan-acento/90 transition-all"
         >
-          Volver al Inicio
+          Volver al inicio
         </Link>
       </div>
     </div>
