@@ -11,19 +11,20 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error("Uncaught error:", error, errorInfo);
+    console.error('Uncaught error:', error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-surface-alt p-4">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-azul-profundo mb-4">Algo salió mal</h1>
-            <p className="text-gray-600 mb-6">Ha ocurrido un error inesperado al cargar la página.</p>
+            <h1 className="text-2xl font-bold text-ink mb-4">Algo salió mal</h1>
+            <p className="text-muted mb-6">Ha ocurrido un error inesperado al cargar la página.</p>
             <button
+              type="button"
               onClick={() => window.location.reload()}
-              className="bg-cyan-acento text-white px-6 py-2 rounded-md font-semibold"
+              className="bg-cyan-acento text-azul-profundo px-6 py-2 rounded-md font-semibold"
             >
               Recargar página
             </button>

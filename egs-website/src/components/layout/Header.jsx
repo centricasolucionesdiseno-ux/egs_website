@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import logoImg from '../../assets/images/egs-logo.png';
+import logoLight from '../../assets/images/egs-logo.png';
+import logoDark from '../../assets/images/egs-logo-dark.png';
+import ThemeToggle from '../ui/ThemeToggle';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,60 +10,69 @@ export default function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Escritorio: ítem activo con subrayado cyan
   const linkClass = ({ isActive }) =>
-    isActive
-      ? "text-cyan-acento font-semibold transition-colors"
-      : "text-white hover:text-cyan-acento transition-colors";
+    `pb-1 border-b-2 font-medium transition-colors ${
+      isActive ? 'text-ink border-cyan-acento' : 'text-muted border-transparent hover:text-ink'
+    }`;
+
+  // Móvil: ítem activo en negrita
+  const mobileLinkClass = ({ isActive }) =>
+    `py-2 transition-colors ${isActive ? 'text-ink font-semibold' : 'text-muted hover:text-ink'}`;
+
+  const ctaClass =
+    'bg-cyan-acento text-azul-profundo px-5 py-2.5 rounded-md font-semibold hover:bg-cyan-acento/90 transition-all';
 
   return (
-    <header className="bg-azul-profundo sticky top-0 z-50 shadow-md">
+    <header className="bg-surface sticky top-0 z-50 border-b border-line shadow-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
           <img
-            src={logoImg}
+            src={logoLight}
             alt="EGS Soluciones Integrales"
-            className="h-12 w-auto object-contain"
+            className="h-12 w-auto object-contain dark:hidden"
+          />
+          <img
+            src={logoDark}
+            alt="EGS Soluciones Integrales"
+            className="h-12 w-auto object-contain hidden dark:block"
           />
         </Link>
 
-        {/* Menú Desktop */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <NavLink to="/" className={linkClass}>Inicio</NavLink>
-          <NavLink to="/acerca-de" className={linkClass}>Acerca de</NavLink>
-          <NavLink to="/servicios" className={linkClass}>Servicios</NavLink>
-          <NavLink to="/proyectos" className={linkClass}>Proyectos</NavLink>
-          <NavLink
-            to="/contacto"
-            className="bg-cyan-acento text-azul-profundo px-5 py-2.5 rounded-md font-semibold hover:bg-cyan-acento/90 transition-all"
-          >
-            Contáctanos
-          </NavLink>
-        </nav>
+        <div className="flex items-center gap-2">
+          {/* Menú Desktop */}
+          <nav aria-label="Principal" className="hidden md:flex items-center space-x-8 mr-4">
+            <NavLink to="/" className={linkClass}>Inicio</NavLink>
+            <NavLink to="/acerca-de" className={linkClass}>Acerca de</NavLink>
+            <NavLink to="/servicios" className={linkClass}>Servicios</NavLink>
+            <NavLink to="/proyectos" className={linkClass}>Proyectos</NavLink>
+            <NavLink to="/contacto" className={ctaClass}>Contáctenos</NavLink>
+          </nav>
 
-        {/* Botón Móvil */}
-        <button
-          type="button"
-          onClick={toggleMenu}
-          className="md:hidden text-white text-2xl focus:outline-none p-2"
-          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-        >
-          <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
-        </button>
+          <ThemeToggle />
+
+          {/* Botón Móvil */}
+          <button
+            type="button"
+            onClick={toggleMenu}
+            className="md:hidden text-ink text-2xl focus:outline-none p-2"
+            aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={isMenuOpen}
+          >
+            <i className={`fas ${isMenuOpen ? 'fa-xmark' : 'fa-bars'}`} aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
 
       {/* Menú Móvil */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-azul-profundo border-t border-blue-900 px-4 pt-2 pb-6 space-y-3 flex flex-col">
-          <NavLink to="/" className={linkClass} onClick={closeMenu}>Inicio</NavLink>
-          <NavLink to="/acerca-de" className={linkClass} onClick={closeMenu}>Acerca de</NavLink>
-          <NavLink to="/servicios" className={linkClass} onClick={closeMenu}>Servicios</NavLink>
-          <NavLink to="/proyectos" className={linkClass} onClick={closeMenu}>Proyectos</NavLink>
-          <NavLink
-            to="/contacto"
-            className="inline-block bg-cyan-acento text-white px-5 py-2 rounded-md font-semibold text-center mt-2"
-            onClick={closeMenu}
-          >
-            Contáctanos
+        <nav aria-label="Principal móvil" className="md:hidden bg-surface border-t border-line px-4 pt-2 pb-6 flex flex-col">
+          <NavLink to="/" className={mobileLinkClass} onClick={closeMenu}>Inicio</NavLink>
+          <NavLink to="/acerca-de" className={mobileLinkClass} onClick={closeMenu}>Acerca de</NavLink>
+          <NavLink to="/servicios" className={mobileLinkClass} onClick={closeMenu}>Servicios</NavLink>
+          <NavLink to="/proyectos" className={mobileLinkClass} onClick={closeMenu}>Proyectos</NavLink>
+          <NavLink to="/contacto" className={`${ctaClass} text-center mt-3`} onClick={closeMenu}>
+            Contáctenos
           </NavLink>
         </nav>
       )}

@@ -2,21 +2,27 @@
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap');
 
+/* La variante dark: se activa con <html data-theme="dark"> (interruptor o preferencia del sistema) */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /* Tokens de diseño para Tailwind v4 */
 @theme {
-  /* Colores de marca */
+  /* Colores de marca (no cambian con el tema) */
   --color-azul-profundo: #0d2b5e;
   --color-azul-medio: #173f8a;
   --color-cyan-acento: #00a8cc;
-  --color-gris-oscuro: #333333;
-  --color-gris-medio: #666666;
-  --color-gris-bg: #f8fafc;
-  --color-blanco: #ffffff;
 
-  /* Derivados (cyan-claro se usaba sin estar definido) */
-  --color-cyan-claro: #e6f7fb;
-  --color-cyan-texto: #006f87; /* cyan legible sobre blanco/cyan-claro (AA) */
-  --color-line: #e3e8ef;       /* hairline de 1px para bordes y divisores */
+  /* Semánticos: cambian con el tema (valores del modo claro) */
+  --color-surface: #ffffff;       /* fondo de página y tarjetas */
+  --color-surface-alt: #f8fafc;   /* secciones alternas */
+  --color-ink: #0d2b5e;           /* títulos y texto principal */
+  --color-body: #333333;          /* texto de cuerpo */
+  --color-muted: #666666;         /* texto secundario */
+  --color-line: #e3e8ef;          /* bordes y divisores de 1px */
+  --color-cyan-claro: #e6f7fb;    /* fondo de íconos y etiquetas cyan */
+  --color-cyan-texto: #006f87;    /* cyan legible como texto (AA) */
+  --color-chip-bg: rgb(23 63 138 / 0.1);
+  --color-chip-text: #173f8a;
 
   /* Tipografías */
   --font-sans: 'DM Sans', system-ui, sans-serif;
@@ -36,6 +42,23 @@
   --breakpoint-xl: 1920px;
 }
 
+:root { color-scheme: light; }
+
+/* Modo oscuro: solo se redefinen los semánticos */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-surface: #0f1a2e;
+  --color-surface-alt: #0a1322;
+  --color-ink: #e8eef8;
+  --color-body: #cbd5e1;
+  --color-muted: #94a3b8;
+  --color-line: #243553;
+  --color-cyan-claro: #12384a;
+  --color-cyan-texto: #4cc9e6;
+  --color-chip-bg: rgb(125 160 230 / 0.16);
+  --color-chip-text: #a9c1f0;
+}
+
 /* Reglas CSS globales */
 html {
   font-size: 16px;
@@ -44,8 +67,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-gris-oscuro);
-  background-color: var(--color-blanco);
+  color: var(--color-body);
+  background-color: var(--color-surface);
   overflow-x: hidden;
 }
 
